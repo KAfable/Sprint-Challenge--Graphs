@@ -22,14 +22,18 @@ class Room:
 
     def get_exits(self):
         exits = []
-        if self.n_to is not None:
-            exits.append("n")
+
         if self.s_to is not None:
             exits.append("s")
+
         if self.w_to is not None:
             exits.append("w")
+
         if self.e_to is not None:
             exits.append("e")
+
+        if self.n_to is not None:
+            exits.append("n")
         return exits
 
     def get_exits_string(self):
@@ -39,15 +43,15 @@ class Room:
         if direction == "n":
             self.n_to = connecting_room
             connecting_room.s_to = self
-        elif direction == "s":
-            self.s_to = connecting_room
-            connecting_room.n_to = self
         elif direction == "e":
             self.e_to = connecting_room
             connecting_room.w_to = self
         elif direction == "w":
             self.w_to = connecting_room
             connecting_room.e_to = self
+        elif direction == "s":
+            self.s_to = connecting_room
+            connecting_room.n_to = self
         else:
             print("INVALID ROOM CONNECTION")
             return None
