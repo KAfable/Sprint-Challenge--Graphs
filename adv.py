@@ -20,7 +20,7 @@ traversal_path = []
 
 
 def generate_room_path(p1):
-    ''' Generates a path (list) of rooms in DFT order to explore every room.'''
+    ''' Generates a path (list) of rooms in DFT order to explore every room for a given player.'''
     stack = Stack()
     stack.push(p1.current_room)
     visited = []
@@ -37,7 +37,7 @@ def generate_room_path(p1):
 
 
 def get_shortest_path(origin_id, destination_id):
-    ''' Return a list of ID's containing the shortest path from starting room id, to the destination id '''
+    ''' Return a list of ID's containing the shortest path from starting room id, to the destination id'''
     q = Queue()
     q.enqueue([origin_id])
     visited = set()
@@ -60,7 +60,7 @@ def convert_path_to_directions(path, p1):
     ''' Given a path of rooms and a player, converts it to a list of directions for the player to follow. '''
     direction_path = []
     if p1.current_room.id != path[0]:
-        print('PLayer must start in the first room of the traversal list.')
+        print('Player must start in the first room of the traversal list.')
         return
     for i in range(len(path) - 1):
         direction = p1.current_room.is_neighbor(path[i+1])
